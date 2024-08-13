@@ -33,38 +33,47 @@ let midiNotes = [
 ];
 let radius = 150;
 
-let balls;
-let num = 24;
-let va = 1;
-let buffer = 2.5;
-let loop =3;
+let balls = [];
+let num;
+
+let buffer = 5;
+let loop = 3;
+let val;
+let speedSlider;
+let ballsSlider
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   angleMode(DEGREES);
+  stroke(255);
 
-  balls = [];
+  speedSlider = new Slider(20, 1, 1, 0.5, width/2 - 50, height - 50);
+ 
+ 
+
+ 
+  num = 22 
+  console.log()
   for (let i = 0; i < loop; i++) {
     balls[i] = [];
     for (let j = 0; j < num; j++) {
       let startAngle = (360 / loop) * i;
       let shiftAngle = (180 / num) * j;
       let note = midiNotes[j];
-      balls[i][j] = new Ball(startAngle, shiftAngle, va, note, buffer);
+      balls[i][j] = new Ball(startAngle, shiftAngle, note, buffer);
     }
   }
-
- 
 }
 function draw() {
   background(0, 100);
-  stroke(255, )
-
   playBtn.addEventListener("click", () => {
     if (getAudioContext().state !== "running") {
       getAudioContext().resume();
     }
   });
+  speedSlider.display();
+
+  
   // outer circle
   translate(width / 2, height / 2);
   noFill();
@@ -75,9 +84,6 @@ function draw() {
       balls[i][j].draw();
     }
   }
-
-  //  b.update()
-  //  b.draw()
 }
 
 function windowResized() {

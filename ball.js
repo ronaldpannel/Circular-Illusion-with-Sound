@@ -1,13 +1,14 @@
 class Ball {
-  constructor(startAngle, shiftAngle, va, note, buffer) {
+  constructor(startAngle, shiftAngle, note, buffer, ) {
     this.startAngle = startAngle
     this.x = 0;
     this.angle = 0;
     this.shiftAngle = shiftAngle;
     this.angle = 0;
-    this.va = va;
+    this.num
     this.note = note;
     this.buffer = buffer
+    this.numBalls
 
     this.env = new p5.Envelope();
     let attackVol = 1;
@@ -30,7 +31,9 @@ class Ball {
     if (this.collision(0)) {
       this.env.play();
     }
-    this.angle += this.va;
+    this.angle += speedSlider.value;
+    
+    
   }
   collision(x) {
    
